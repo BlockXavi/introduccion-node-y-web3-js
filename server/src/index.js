@@ -26,7 +26,7 @@ const database = {
 // Paso 9
 // Middleware: Procesa la solicitud HTTP antes de que la aplicación la maneje.
 // En este caso, 'express.json()' verifica si la solicitud es JSON.
-app.use(express.json) // Paso intermedio necesario
+app.use(express.json()) // Paso intermedio necesario
 
 // Paso 10
 // Definir una ruta raíz para comprobar el funcionamiento de la API
