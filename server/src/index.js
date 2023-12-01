@@ -45,11 +45,11 @@ app.get('/api/productos', (req, res) => {
 // Define una ruta POST para crear un producto.
 app.post('/api/productos', (req, res) => {
     // Obtenemos el producto a agregar desde el cuerpo de la solicitud (req.body).
-    const producto = req.body
+    const nuevoProducto = req.body
     // Agregamos el nuevo producto a la base de datos.
-    database.productos.push(producto)
+    database.productos.push(nuevoProducto)
     // Devolvemos un mensaje de éxito junto con el producto agregado en formato json.
-    res.send({ mensaje: 'Producto agregado correctamente', producto })
+    res.json({ mensaje: 'Producto agregado correctamente', producto: nuevoProducto })
 })
 
 
@@ -59,9 +59,9 @@ app.delete('/api/productos/:id', (req, res) => {
     // obtengo el Id del producto a aliminar de Params.
     const productoId = req.params.id
     // Filtro los valores de producto para definir otro array sin el productoId
-    const productoSinProductoAEliminar = database.productos.filter((producto) => producto.id !== productoId)
+    const productosSinProductoAEliminar = database.productos.filter((producto) => producto.id != productoId)
     // Actualizo el database con el nuevo array
-    database.productos = productoSinProductoAEliminar
+    database.productos = productosSinProductoAEliminar
     // Devolvemos un mensaje de éxito junto con el producto eliminado.
     res.send({ mensaje: 'Producto eliminado correctamente' })
 
