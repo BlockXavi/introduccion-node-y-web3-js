@@ -59,12 +59,11 @@ app.delete('/api/productos/:id', (req, res) => {
     // obtengo el Id del producto a aliminar de Params.
     const productoId = req.params.id
     // Filtro los valores de producto para definir otro array sin el productoId
-    const productosSinProductoAEliminar = database.productos.filter((producto) => producto.id != productoId)
+    const productosSinProductoAEliminar = database.productos.filter((producto) => producto.id !== +productoId)
     // Actualizo el database con el nuevo array
     database.productos = productosSinProductoAEliminar
     // Devolvemos un mensaje de éxito junto con el producto eliminado.
     res.send({ mensaje: 'Producto eliminado correctamente' })
-
 })
 
 // Paso 13
